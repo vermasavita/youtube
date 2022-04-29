@@ -19,7 +19,7 @@ const Navbar = () => {
                 <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path>
               </svg>
             </button>
-            <div className={styles.logo}>Note Book</div>
+            <div className={styles.logo}>VoB</div>
           </div>
         </div>
       </header>
