@@ -1,0 +1,95 @@
+.videoCard {
+  max-width: 30rem;
+  height: 22.2rem;
+  cursor: pointer;
+  background-color: black;
+  border: 1px solid black;
+}
+/* aliceblue */
+.videoHeader {
+    margin-top: 2rem;
+    height: 80%;
+  width: 100%;
+}
+
+.videoHeader img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.videoActionContainer{
+    display: flex;
+    justify-content: space-between;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    align-items: center;
+    margin: 2px;
+}
+
+.videoTimer span {
+  font-size: 1.2rem;
+  color: white;
+  font-weight: bolder;
+}
+.videoActionBtns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.sidebarIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 3px;
+  cursor: pointer;
+  fill: white;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebarIcon:hover{
+    background-color: aliceblue;
+    border-radius: 50%;
+    fill: black;
+}
+.sidebarIcon:active{
+    fill: gray;
+
+}
+.videoActionBtns button {
+    background: none;
+    border: none;
+}
+
+.videoInfo{
+    display: flex;
+    height: 6rem;
+}
+
+.videoInfoImg{
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.videoInfo img{
+    height: 3.5rem;
+    width: 3.5rem;
+    object-fit: cover;
+    border-radius: 50%;
+
+}
+
+.videoInfoContent{
+    padding: 3px;
+    font-size: 1.1rem;
+    width: 90%;
+}
+
+.videoInfo span{
+    font-size: 1rem;
+    color: rgb(82, 80, 80);
+}
