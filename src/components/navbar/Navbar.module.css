@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+
+:root {
+  --primary-color: rgba(255, 255, 255);
+  --light-color: rgb(233, 232, 232);
+  --ligtest-grey-color: rgb(144, 144, 144);
+  --medium-grey: rgb(95, 99, 104);
+  --black-color: rgb(13, 13, 13);
+  --btn-color: #5878e5;
+}
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+.header {
+  height: 5rem;
+  position: sticky;
+  top: 0;
+  display: flex;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.headerActionContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.leftHead {
+  display: flex;
+  align-items: center;
+  width: 30%;
+  padding-left: 1rem;
+}
+
+.logo {
+  padding-left: 0.5rem;
+  font-size: 2rem;
+}
+.menuIconBtn {
+  background: none;
+  border: none;
+  padding: 0;
+}
+.menuIcon {
+  height: 2.5rem;
+  width: 2.5rem;
+  fill: var(--medium-grey);
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 1rem;
+}
+
+.menuIcon:hover {
+  background-color: var(--light-color);
+}
