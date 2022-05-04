@@ -1,0 +1,88 @@
+.playlist-card {
+  display: flex;
+  width: 40%;
+  height: 15rem;
+  background-color: var(--light-color);
+  border-radius: 5px;
+}
+
+h1{
+    text-align: center;
+    padding: 2rem;
+}
+
+.playlist-card-image {
+  width: 40%;
+  height: 100%;
+}
+
+.playlist-card-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.playlist-card-info {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  height: 100%;
+
+}
+
+.playlist-card-content {
+  font-size: 1.8rem;
+  font-weight: 500;
+  padding: 2rem;
+  height: 80%;
+}
+.playlist-card-content span {
+  font-size: 1.2rem;
+  color: var(--ligtest-color);
+}
+.playlist-card-action {
+  text-align: end;
+  padding: 1.5rem;
+}
+
+
+.playlist-card-action{
+    height: 20%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1rem;
+}
+.playlist-card-action .icon {
+  width: 2rem;
+  height: 2rem;
+  fill: var(--lightest-color);
+  cursor: pointer;
+  /* border: 1px solid black; */
+}
+
+.playlist-container{
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+
+@media screen and (max-width: 900px) {
+    .playlist-card-content{
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .playlist-container{
+        flex-direction: column;
+    }
+
+    .playlist-card {
+        width: 90%;
+      }
+}

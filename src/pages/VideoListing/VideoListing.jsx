@@ -1,6 +1,5 @@
 import { VideoCard } from "../../components/VideoCard/VideoCard";
-// import styles from "./VideoListing.module.css";
-import "./videoListing.css"
+import "./videoListing.css";
 import { SideBar } from "../../components/sidebar/Sidebar";
 const VideoListing = () => {
   return (
@@ -18,15 +17,15 @@ const VideoListing = () => {
           <VideoCard />
           <VideoCard />
           <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard /> 
+          <VideoCard />
+          <VideoCard />
+          <VideoCard />
+          <VideoCard />
+          <VideoCard />
+          <VideoCard />
+          <VideoCard />
+          <VideoCard />
+          <VideoCard />
         </div>
       </div>
     </div>
