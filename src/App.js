@@ -7,7 +7,6 @@ function App() {
   return (
     <div className="App">
       <Navbar/>
-      <SideBar/>
       <Routes> 
       <Route path="/" element={<VideoListing/>}/>
       </Routes>
