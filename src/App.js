@@ -7,6 +7,7 @@ import { LikedVideo } from "./pages/Liked/LikedVideos";
 import { WatchLaterVideo } from "./pages/WatchLaterVideo/WatchLatedVideos";
 import { WatchHistory } from "./pages/WatchHistory/WatchHistory";
 import { Login } from "./pages/Authentication/Login/Login";
+import { Signup } from "./pages/Authentication/Signup/Signup";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/watchlater" element ={<WatchLaterVideo/>}/>
         <Route path="/history" element ={<WatchHistory/>}/>
         <Route path="/login" element ={<Login/>}/>
+        <Route path="/signup" element ={<Signup/>}/>
       </Routes>
     </div>
   );
