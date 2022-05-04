@@ -4,6 +4,7 @@ import { VideoListing } from "./pages/VideoListing/VideoListing";
 import { Playlist } from "./pages/Playlist/Playlist";
 import { SideBar } from './components/sidebar/Sidebar'
 import { LikedVideo } from "./pages/Liked/LikedVideos";
+import { WatchLaterVideo } from "./pages/WatchLaterVideo/WatchLatedVideos";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<VideoListing />} />
         <Route path="/playlist" element={<Playlist />} />
         <Route path="/liked" element ={<LikedVideo/>}/>
+        <Route path="/watchlater" element ={<WatchLaterVideo/>}/>
       </Routes>
     </div>
   );
