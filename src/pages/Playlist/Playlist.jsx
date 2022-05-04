@@ -12,7 +12,6 @@ const Playlist = () => {
             <PlaylistCard/>
             <PlaylistCard/>
             <PlaylistCard/>
-
             <PlaylistCard/>
             <PlaylistCard/>
         </div>

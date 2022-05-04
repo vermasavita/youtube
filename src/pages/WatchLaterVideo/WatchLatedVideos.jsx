@@ -8,12 +8,6 @@ const WatchLaterVideo = () => {
             <WatchLaterVideoCard/>
             <WatchLaterVideoCard/>
             <WatchLaterVideoCard/>
-            <WatchLaterVideoCard/>
-            <WatchLaterVideoCard/>
-            <WatchLaterVideoCard/>
-            <WatchLaterVideoCard/>
-            <WatchLaterVideoCard/>
-            <WatchLaterVideoCard/>
         </div>
         </>
     )
