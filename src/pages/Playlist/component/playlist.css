@@ -6,9 +6,9 @@
   border-radius: 5px;
 }
 
-h1{
-    text-align: center;
-    padding: 2rem;
+h1 {
+  text-align: center;
+  padding: 2rem;
 }
 
 .playlist-card-image {
@@ -27,7 +27,6 @@ h1{
   flex-direction: column;
   width: 60%;
   height: 100%;
-
 }
 
 .playlist-card-content {
@@ -45,13 +44,12 @@ h1{
   padding: 1.5rem;
 }
 
-
-.playlist-card-action{
-    height: 20%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 1rem;
+.playlist-card-action {
+  height: 20%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem;
 }
 .playlist-card-action .icon {
   width: 2rem;
@@ -61,16 +59,16 @@ h1{
   /* border: 1px solid black; */
 }
 
-.playlist-container{
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
+.playlist-container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
 }
 
-.btn{
+.btn {
   box-shadow: none;
   background-color: var(--black-color);
   color: var(--white-color);
@@ -80,18 +78,66 @@ h1{
   cursor: pointer;
 }
 
+/* displayplaylist */
+
+.display-playlist-container{
+  width: 45rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 5px;
+  height: fit-content;
+  cursor: pointer;
+  margin: auto;
+  background-color: var( --ligtest-color);
+}
+
+.playlist-name {
+  font-size: 1.8rem;
+}
+
+.playlist-info {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  gap: 10px;
+}
+
+.playlist-info p {
+  font-size: 1.7rem;
+}
+
+.playlist-info .icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  fill: var(--black-color);
+}
+
+/* //playlist */
+.playlist-container {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 @media screen and (max-width: 900px) {
-    .playlist-card-content{
-        font-size: 1.5rem;
-    }
+  .playlist-card-content {
+    font-size: 1.5rem;
+  }
 }
 
 @media screen and (max-width: 700px) {
-    .playlist-container{
-        flex-direction: column;
-    }
+  .playlist-container {
+    flex-direction: column;
+  }
 
-    .playlist-card {
-        width: 90%;
-      }
+  .playlist-card {
+    width: 90%;
+  }
+
+  .display-playlist-container{
+    width: 100%;
+  }
 }
