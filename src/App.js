@@ -11,6 +11,7 @@ import { WatchLaterVideo } from "./pages/WatchLaterVideo/WatchLatedVideos";
 import { WatchHistory } from "./pages/WatchHistory/WatchHistory";
 import { Login } from "./pages/Authentication/Login/Login";
 import { Signup } from "./pages/Authentication/Signup/Signup";
+import { LandingPage } from "./pages/LandingPage/LandingPage";
 
 function App() {
   return (
@@ -29,7 +30,8 @@ function App() {
         pauseOnHover
       />
       <Routes>
-        <Route path="/" element={<VideoListing />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/videolisting" element={<VideoListing />} />
         <Route path="/playlist" element={<Playlist />} />
         <Route path="/liked" element ={<LikedVideo/>}/>
         <Route path="/watchlater" element ={<WatchLaterVideo/>}/>
