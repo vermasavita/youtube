@@ -1,0 +1,30 @@
+.video-listing-container{
+    display: flex;
+}
+
+.video-listing{
+    min-height: calc(100vh - 5rem);
+}
+.video-category{
+    padding:  2rem ;
+}
+
+.video-listing .video-category .btn{
+    box-shadow: none;
+    padding: .5rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: var(--primary);
+}
+
+.video-listin-flex{
+  min-height: 30rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+
