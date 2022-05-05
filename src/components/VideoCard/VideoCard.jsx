@@ -2,10 +2,9 @@ import "./videoCard.css";
 const VideoCard = () => {
   return (
     <div className="video-card-container">
-
       <div className="video-image">
         <img
-          src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dGh1bWJuYWlsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+          src="https://images.unsplash.com/photo-1651683298355-fb85321852fd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
           alt=""
         />
         <div className="video-time">10:00</div>
