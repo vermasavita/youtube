@@ -4,7 +4,7 @@ const VideoCard = () => {
     <div className="video-card-container">
       <div className="video-image">
         <img
-          src="https://images.unsplash.com/photo-1644982654072-0b42e6636821?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
+          src="https://images.unsplash.com/photo-1651683298355-fb85321852fd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
           alt=""
         />
         <div className="video-time">10:00</div>
@@ -14,7 +14,7 @@ const VideoCard = () => {
           <img
             src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
             alt="avatar image 1"
-            class="avatar"
+            className="avatar"
           />
         </div>
         <div className="video-content">
@@ -30,7 +30,8 @@ const VideoCard = () => {
           </svg>
         </div>
       </div>
-    </div>
+      </div>
+
   );
 };
 

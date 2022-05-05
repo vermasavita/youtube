@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+
+:root {
+  --primary: #ff0000;
+  --white-color: #fff;
+  --light-color: rgb(233, 232, 232);
+  --ligtest-color: rgb(131, 131, 131);
+  --black-color: #000;
+  --info-color: rgb(43, 169, 223);
+  --error-color: #fd5d5d;
+  --success-color: #73d059;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+.Toastify__toast--success {
+  background: var(--success-color) !important;
+}
+
+.Toastify__toast--error {
+  background: var(--error-color) !important;
+}
+
+.Toastify__toast--warning {
+  background-color: var(--info-color) !important;
+}
+
+.Toastify__toast {
+  font-size: 1.5rem;
+}

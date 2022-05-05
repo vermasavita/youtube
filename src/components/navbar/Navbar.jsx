@@ -1,8 +1,20 @@
 import "./navbar.css";
 import { Link } from "react-router-dom";
-import { useSidebar } from "../../context/sidebar-context";
+import { useSidebar } from "../../context";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context";
 const Navbar = () => {
+  const navigate = useNavigate();
   const { setSidebar } = useSidebar();
+  const { authDispatch } = useAuth();
+
+  const logoutHandler = () => {
+    navigate("/");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    authDispatch({ type: "LOGOUT" });
+  };
+
   return (
     <header className="header">
       <div className="head-container">
@@ -18,11 +30,17 @@ const Navbar = () => {
       </div>
 
       <div className="action-icon">
-        <button className="btn">
-          <Link className="link" to="/login">
-            Login
-          </Link>
-        </button>
+        {localStorage.getItem("token") ? (
+          <button className="btn" onClick={logoutHandler}>
+            Logout
+          </button>
+        ) : (
+          <button className="btn">
+            <Link className="link" to="/login">
+              Login
+            </Link>
+          </button>
+        )}
       </div>
     </header>
   );
