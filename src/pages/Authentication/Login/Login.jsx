@@ -48,14 +48,14 @@ const Login = () => {
 
           navigate("/");
         } else if (response.status === 401) {
-          throw new Error("Enter correct password");
+          alert("Enter correct password");
         } else if (response.status === 404) {
-          throw new Error("Email not found");
+          alert("Email not found");
         } else if (response.status === 500) {
-          throw new Error("Server error");
+          alert("Server error");
         }
       } catch (error) {
-        console.log(response);
+        console.log(error);
       }
     } else {
       alert("enter both field");
@@ -92,13 +92,6 @@ const Login = () => {
                 value={user.password}
                 onChange={changeHandler}
               />
-            </div>
-          </div>
-
-          <div className="con">
-            <div className="remember-me">
-              <input type="checkbox" id="remember-box" required />
-              <label htmlFor="remember-box">Remember me</label>
             </div>
           </div>
 

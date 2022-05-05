@@ -2,9 +2,11 @@ import "./navbar.css";
 import { Link } from "react-router-dom";
 import { useSidebar } from "../../context";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context";
 const Navbar = () => {
   const navigate = useNavigate();
   const { setSidebar } = useSidebar();
+  const { authDispatch } = useAuth();
 
   const logoutHandler = () => {
     navigate("/");
