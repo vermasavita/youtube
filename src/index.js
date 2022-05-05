@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
-import { SidebarProvider } from "./context/sidebar-context";
+import { AuthProvider, SidebarProvider } from "./context";
 
 // Call make Server
 makeServer();
@@ -11,9 +11,11 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <SidebarProvider>
-        <App />
-      </SidebarProvider>
+      <AuthProvider>
+        <SidebarProvider>
+          <App />
+        </SidebarProvider>
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

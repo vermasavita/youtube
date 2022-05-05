@@ -9,9 +9,9 @@ const VideoListing = () => {
       </div>
       <div className="video-listing">
         <div className="video-category">
-          <button class="btn contained">All</button>
-          <button class="btn contained">Non Fiction</button>
-          <button class="btn contained">Fiction</button>
+          <button className="btn contained">All</button>
+          <button className="btn contained">Non Fiction</button>
+          <button className="btn contained">Fiction</button>
         </div>
         <div className="video-listin-flex">
           <VideoCard />
