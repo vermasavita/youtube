@@ -4,7 +4,13 @@ import "./landing-page.css";
 import { FeatureCategoryCard } from "./component/FeatureCategoryCard";
 import { categories } from "../../backend/db/categories";
 import { videos } from "../../backend/db/videos";
+import { useNavigate } from "react-router-dom";
 const LandingPage = () => {
+  const navigate = useNavigate();
+
+  const categoryClickHandler = () => {
+    navigate("videolisting")
+  }
   return (
     <div className="video-listing-container">
       <div>
@@ -20,6 +26,7 @@ const LandingPage = () => {
                 itemId={item._id}
                 imageSrc={item.imageSrc}
                 title={item.categoryName}
+                categoryClickHandler={categoryClickHandler}
               />
             ))}
           </div>
