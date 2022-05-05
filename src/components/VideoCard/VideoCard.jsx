@@ -2,9 +2,10 @@ import "./videoCard.css";
 const VideoCard = () => {
   return (
     <div className="video-card-container">
+
       <div className="video-image">
         <img
-          src="https://images.unsplash.com/photo-1644982654072-0b42e6636821?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
+          src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dGh1bWJuYWlsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
           alt=""
         />
         <div className="video-time">10:00</div>
@@ -30,7 +31,8 @@ const VideoCard = () => {
           </svg>
         </div>
       </div>
-    </div>
+      </div>
+
   );
 };
 
