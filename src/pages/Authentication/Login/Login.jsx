@@ -3,6 +3,7 @@ import "../authentication.css";
 import { loginService } from "../../../services";
 import { useState } from "react";
 import { useAuth } from "../../../context";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -54,11 +55,12 @@ const Login = () => {
         } else if (response.status === 500) {
           alert("Server error");
         }
+        toast.success("Successfully Logged In")
       } catch (error) {
         console.log(error);
       }
     } else {
-      alert("enter both field");
+      toast.error("Enter both the fields");
     }
   };
 
@@ -69,7 +71,7 @@ const Login = () => {
           <h1>Login</h1>
           <div className="login-credential">
             <div className="login-email">
-              <label htmlFor="email">Email address *</label>
+              <label htmlFor="email">Email Address *</label>
               <input
                 type="email"
                 name="email"

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useAuth } from "../../../context";
 import { signUpService } from "../../../services";
 import "../authentication.css";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -19,13 +20,17 @@ const Signup = () => {
   };
 
   const checkInputFields = () => {
-    return (user.email !== "" && user.password !== "" && user.confirmPassword !== "");
+    return (
+      user.email !== "" && user.password !== "" && user.confirmPassword !== ""
+    );
   };
 
   const checkPassword = () => {
     if (user.password !== user.confirmPassword) {
-      alert("Password doesn't match");
-    }else {return true; }
+      toast.error("Password doesn't match");
+    } else {
+      return true;
+    }
   };
 
   const signUpHandler = async (event) => {
@@ -49,6 +54,8 @@ const Signup = () => {
                 token: response.data.encodedToken,
               },
             });
+
+            toast.success("Successfuly Signed In");
           } else {
             throw new Error("Something went wrong! Please try again later");
           }
@@ -56,6 +63,8 @@ const Signup = () => {
           console.log(error);
         }
       }
+    }else{
+      toast.error("Enter all the fields")
     }
   };
   return (
@@ -65,7 +74,7 @@ const Signup = () => {
           <h1>Sign Up</h1>
           <div className="login-credential">
             <div className="login-email">
-              <label htmlFor="email">Email address *</label>
+              <label htmlFor="email">Email Address *</label>
               <input
                 type="email"
                 name="email"
@@ -102,15 +111,6 @@ const Signup = () => {
               />
             </div>
           </div>
-
-          {/* <div className="con">
-            <div className="remember-me">
-              <input type="checkbox" id="remember-box" />
-              <label htmlFor="remember-box">
-                I accept all the Terms & Conditions
-              </label>
-            </div>
-          </div> */}
 
           <div className="login-btns">
             <button type="submit" className="login" onClick={signUpHandler}>

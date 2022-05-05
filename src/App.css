@@ -1,0 +1,10 @@
+.Toastify__toast--success {
+    background: #73d059 !important;
+  }
+
+.Toastify__toast--error {
+    background: #FD5D5D !important;
+  }
+  .Toastify__toast{
+      font-size: 1.5rem;
+  }
