@@ -1,6 +1,7 @@
 import { VideoCard } from "../../components/VideoCard/VideoCard";
 import "./videoListing.css";
 import { SideBar } from "../../components/sidebar/Sidebar";
+import { videos } from "../../backend/db/videos";
 const VideoListing = () => {
   return (
     <div className="video-listing-container">
@@ -14,18 +15,15 @@ const VideoListing = () => {
           <button className="btn contained">Fiction</button>
         </div>
         <div className="video-listin-flex">
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
+          {videos.map((video) => (
+            <VideoCard
+              key={video._id}
+              imgSrc={video.imgSrc}
+              videoTime={video.time}
+              title={video.title}
+              creator={video.creator}
+            />
+          ))}
         </div>
       </div>
     </div>
