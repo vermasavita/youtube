@@ -8,7 +8,7 @@ const Playlist = () => {
       <div>
         <SideBar />
       </div>
-      <div>
+      <div className="playlist-div">
         <h1>Playlist</h1>
         <div className="playlist-container">
           <DisplayPlaylist />
