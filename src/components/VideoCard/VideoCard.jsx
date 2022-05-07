@@ -1,24 +1,26 @@
 import "./videoCard.css";
-const VideoCard = () => {
+
+const VideoCard = ({ videoId, videoTitle, videothumbnail, videoLength, videoCreator }) => {
+
   return (
-    <div className="video-card-container">
+    <div className="video-card-container" key={videoId} >
       <div className="video-image">
         <img
-          src="https://images.unsplash.com/photo-1651683298355-fb85321852fd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
-          alt=""
+          src={videothumbnail}
+          alt={videoTitle}
         />
-        <div className="video-time">10:00</div>
+        <div className="video-time">{videoLength}</div>
       </div>
       <div className="video-info">
         <div className="avatar-box">
           <img
             src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-            alt="avatar image 1"
+            alt="avatar image"
             className="avatar"
           />
         </div>
         <div className="video-content">
-        Question of the day" thread in our neoG discord |<span> Savita Verma</span>
+        {videoTitle} |<span> {videoCreator}</span>
         </div>
         <div className="action-icons">
           <svg

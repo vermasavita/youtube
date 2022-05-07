@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
-import { AuthProvider, SidebarProvider } from "./context";
+import { AuthProvider, SidebarProvider, VideoCatgoryProvider } from "./context";
 
 // Call make Server
 makeServer();
@@ -13,7 +13,9 @@ ReactDOM.render(
     <BrowserRouter>
       <AuthProvider>
         <SidebarProvider>
-          <App />
+          <VideoCatgoryProvider>
+            <App />
+          </VideoCatgoryProvider>
         </SidebarProvider>
       </AuthProvider>
     </BrowserRouter>
