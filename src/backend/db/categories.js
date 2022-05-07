@@ -27,10 +27,5 @@ export const categories = [
     _id: uuid(),
     categoryName: "Motivation",
     thumbnail: "http://i3.ytimg.com/vi/wnHW6o8WMas/hqdefault.jpg",
-  },
-  {
-    _id: uuid(),
-    categoryName: "Poetry",
-    thumbnail: "http://i3.ytimg.com/vi/kKSbaT-hlds/hqdefault.jpg",
-  },
+  }
 ];

@@ -216,15 +216,4 @@ export const videos = [
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
   },
 
-  {
-    _id: uuid(),
-    title: "Sab Theek Ho Jayega | Akash Singh ",
-    thumbnail: "https://i3.ytimg.com/vi/B8iGZvEUKKw/maxresdefault.jpg",
-    videoLength: "5:02",
-    link: "https://www.youtube.com/watch?v=B8iGZvEUKKw",
-    creator: "The Social House",
-    categoryName: "Poetry",
-    description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
-  },
 ];

@@ -6,7 +6,6 @@ import { Navbar, SideBar } from "./components";
 import {
   Login,
   Signup,
-  LandingPage,
   VideoListing,
   Playlist,
   LikedVideo,
@@ -31,8 +30,7 @@ function App() {
         pauseOnHover
       />
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/videolisting" element={<VideoListing />} />
+        <Route path="/" element={<VideoListing />} />
         <Route path="/playlist" element={<Playlist />} />
         <Route path="/liked" element={<LikedVideo />} />
         <Route path="/watchlater" element={<WatchLaterVideo />} />

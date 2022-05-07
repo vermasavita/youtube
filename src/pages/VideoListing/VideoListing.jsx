@@ -1,27 +1,65 @@
-import { VideoCard } from "../../components/VideoCard/VideoCard";
+import { SideBar, VideoCard } from "../../components";
 import "./videoListing.css";
-import { SideBar } from "../../components/sidebar/Sidebar";
-import { videos } from "../../backend/db/videos";
+import { getCategoryHandler, getVideosHandler } from "../../services";
+import { useVideoCategory } from "../../context";
+import { useState, useEffect } from "react";
+import { filterCategoryVideos } from "../../utils/filerCategoryVideos";
+
 const VideoListing = () => {
+  const [categories, setCategories] = useState([]);
+  const [videos, setvideos] = useState([]);
+  const { videoCategoryState, videoCategoryDispatch } = useVideoCategory();
+
+  const { category } = videoCategoryState;
+
+  const callGetVideosAndCategoryHandler = () => {
+    getCategoryHandler(setCategories);
+    getVideosHandler(setvideos);
+  };
+
+  useEffect(() => callGetVideosAndCategoryHandler(), []);
+
+  const categoryFilteredVideos = filterCategoryVideos(category, videos);
+
   return (
     <div className="video-listing-container">
       <div>
         <SideBar />
       </div>
       <div className="video-listing">
-        <div className="video-category">
-          <button className="btn contained">All</button>
-          <button className="btn contained">Non Fiction</button>
-          <button className="btn contained">Fiction</button>
+        <div className="featured-category">
+          <div>
+            <button
+              className={`btn contained ${category === "" ? "active" : ""}`}
+              onClick={() => videoCategoryDispatch({ type: "CLEAR" })}
+            >
+              All
+            </button>
+            {categories.map((item) => (
+              <button
+                className={`btn contained ${category === item.categoryName ? "active" : ""}`}
+                key={item._id}
+                onClick={() =>
+                  videoCategoryDispatch({
+                    type: "SELECT_CATEGORY",
+                    payload: item.categoryName,
+                  })
+                }
+              >
+                {item.categoryName}
+              </button>
+            ))}
+          </div>
         </div>
         <div className="video-listin-flex">
-          {videos.map((video) => (
+          {categoryFilteredVideos.map((video) => (
             <VideoCard
               key={video._id}
-              videoThumbnail={video.thumbnail}
+              videoId={video._id}
+              videoTitle={video.title}
               videoLength={video.videoLength}
-              title={video.title}
-              creator={video.creator}
+              videothumbnail={video.thumbnail}
+              videoCreator={video.creator}
             />
           ))}
         </div>
