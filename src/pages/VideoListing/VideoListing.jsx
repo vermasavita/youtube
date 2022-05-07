@@ -28,7 +28,7 @@ const VideoListing = () => {
       </div>
       <div className="video-listing">
         <div className="featured-category">
-          <div>
+          <div className="btn-flex">
             <button
               className={`btn contained ${category === "" ? "active" : ""}`}
               onClick={() => videoCategoryDispatch({ type: "CLEAR" })}
