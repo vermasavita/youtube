@@ -1,16 +1,26 @@
-import { SideBar } from "../../components";
-import { VideoCard } from "../../components";
+import { SideBar, VideoCard } from "../../components";
 import "./landing-page.css";
-import { FeatureCategoryCard } from "./component/FeatureCategoryCard";
-import { categories } from "../../backend/db/categories";
-import { videos } from "../../backend/db/videos";
-import { useNavigate } from "react-router-dom";
-const LandingPage = () => {
-  const navigate = useNavigate();
+import { getCategoryHandler, getVideosHandler } from "../../services";
+import { useVideoCategory } from "../../context";
+import { useState, useEffect } from "react";
+import { filterCategoryVideos } from "../../utils/filerCategoryVideos";
 
-  const categoryClickHandler = () => {
-    navigate("videolisting")
-  }
+const LandingPage = () => {
+  const [categories, setCategories] = useState([]);
+  const [videos, setvideos] = useState([]);
+  const { videoCategoryState, videoCategoryDispatch } = useVideoCategory();
+
+  const { category } = videoCategoryState;
+
+  const callGetVideosAndCategoryHandler = () => {
+    getCategoryHandler(setCategories);
+    getVideosHandler(setvideos);
+  };
+
+  useEffect(() => callGetVideosAndCategoryHandler(), []);
+
+  const categoryFilteredVideos = filterCategoryVideos(category, videos);
+
   return (
     <div className="video-listing-container">
       <div>
@@ -20,25 +30,37 @@ const LandingPage = () => {
         <div className="featured-category">
           <h1>Featured Cateogories</h1>
           <div className="featured-category-banner">
+            <button
+              className="btn contained"
+              onClick={() => videoCategoryDispatch({ type: "CLEAR" })}
+            >
+              All
+            </button>
             {categories.map((item) => (
-              <FeatureCategoryCard
+              <button
+                className="btn contained"
                 key={item._id}
-                itemId={item._id}
-                imageSrc={item.imageSrc}
-                title={item.categoryName}
-                categoryClickHandler={categoryClickHandler}
-              />
+                onClick={() =>
+                  videoCategoryDispatch({
+                    type: "SELECT_CATEGORY",
+                    payload: item.categoryName,
+                  })
+                }
+              >
+                {item.categoryName}
+              </button>
             ))}
           </div>
         </div>
         <div className="video-listin-flex">
-        {videos.map((video) => (
+          {categoryFilteredVideos.map((video) => (
             <VideoCard
               key={video._id}
-              imgSrc={video.imgSrc}
-              videoTime={video.time}
-              title={video.title}
-              creator={video.creator}
+              videoId={video._id}
+              videoTitle={video.title}
+              videoLength={video.videoLength}
+              videothumbnail={video.thumbnail}
+              videoCreator={video.creator}
             />
           ))}
         </div>

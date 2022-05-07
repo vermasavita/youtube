@@ -1,13 +1,15 @@
 import "./videoCard.css";
-const VideoCard = ({key, imgSrc, title, creator }) => {
+
+const VideoCard = ({ videoId, videoTitle, videothumbnail, videoLength, videoCreator }) => {
+
   return (
-    <div className="video-card-container" key={key}>
+    <div className="video-card-container" key={videoId} >
       <div className="video-image">
         <img
-          src={imgSrc}
-          alt="video thumbail"
+          src={videothumbnail}
+          alt={videoTitle}
         />
-        <div className="video-time">10:00</div>
+        <div className="video-time">{videoLength}</div>
       </div>
       <div className="video-info">
         <div className="avatar-box">
@@ -18,7 +20,7 @@ const VideoCard = ({key, imgSrc, title, creator }) => {
           />
         </div>
         <div className="video-content">
-        {title} |<span> {creator}</span>
+        {videoTitle} |<span> {videoCreator}</span>
         </div>
         <div className="action-icons">
           <svg

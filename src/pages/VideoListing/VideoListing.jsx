@@ -18,8 +18,8 @@ const VideoListing = () => {
           {videos.map((video) => (
             <VideoCard
               key={video._id}
-              imgSrc={video.imgSrc}
-              videoTime={video.time}
+              videoThumbnail={video.thumbnail}
+              videoLength={video.videoLength}
               title={video.title}
               creator={video.creator}
             />
