@@ -1,7 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
-  background-color: var(--primary);
+  background-color: var(--white-color);
 }
 .head-container {
   display: flex;
@@ -15,19 +15,24 @@
   padding: 0 2rem;
 }
 
+.head-container .logo{
+  color: var(--black-color);
+  font-weight: 500;
+}
 .icon {
   width: 2.3rem;
   height: 2.3rem;
   background: none;
   border: none;
-  fill: var(--white-color);
+  fill: var(--black-color);
   cursor: pointer;
 }
 .action-icon .btn{
-    color: var(--primary);
-    background-color: var(--white-color);  
+    color: var(--white-color);
+    background-color: var(--black-color);  
 }
 
 .action-icon .btn .link{
     margin-right: 0;
+    color: var(--white-color);
 }

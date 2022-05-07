@@ -7,7 +7,8 @@
 }
 
 :root {
-  --primary: #ff0000;
+  /* --primary: #ff0000; */
+  --primary: #fff;
   --white-color: #fff;
   --light-color: rgb(233, 232, 232);
   --ligtest-color: rgb(131, 131, 131);
