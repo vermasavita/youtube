@@ -1,4 +1,3 @@
-export { LandingPage } from "./LandingPage/LandingPage";
 export { VideoListing } from "./VideoListing/VideoListing";
 export { WatchLaterVideo } from "./WatchLaterVideo/WatchLatedVideos";
 export { WatchHistory } from "./WatchHistory/WatchHistory";
