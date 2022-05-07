@@ -1,5 +1,6 @@
 import { SideBar, VideoCard } from "../../components";
 import "./videoListing.css";
+import { toast } from "react-toastify";
 import {
   getCategoryHandler,
   getVideosHandler,
@@ -9,8 +10,10 @@ import {
 import { useAuth, useVideoCategory, useWatchLater } from "../../context";
 import { useState, useEffect } from "react";
 import { filterCategoryVideos } from "../../utils/filerCategoryVideos";
+import { useNavigate } from "react-router-dom";
 
 const VideoListing = () => {
+  const navigate = useNavigate();
   const {
     authState: { token },
   } = useAuth();
@@ -27,8 +30,15 @@ const VideoListing = () => {
   };
 
   const callAddItemToWatchLaterVideos = (_id) => {
+    if(token){
       const video = videos.find(item => item._id === _id)
       addItemToWatchLaterVideos(video, token, watchLaterDispatch);
+      toast.info("Saved to Watch Later")
+
+    }
+      else{
+        navigate("/login")
+      }
   };
 
   useEffect(() => callGetVideosAndCategoryHandler(), []);
