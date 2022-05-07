@@ -1,111 +1,154 @@
-.video-card-container{
-     min-height: 22rem;
-    width: 23%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    gap: 2;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    border-radius: 10px;
-    cursor: pointer;
+.video-card-container {
+  min-height: 22rem;
+  width: 23%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 2;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
-.video-image{
-    width: 100%;
-    height: 75%;
-    position: relative;
-  
+.video-image {
+  width: 100%;
+  height: 75%;
+  position: relative;
 }
 
-.video-image .video-time{
-    position: absolute;
-    bottom: 5px;
-    left: 5px;
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--white-color);
+.video-image .video-time {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--white-color);
 }
 
-.video-image img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px 10px 0 0px;
+.video-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0px;
 }
 
-.video-info{
-    height: 25%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
+.video-info {
+  height: 25%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  position: relative;
 }
 
-.video-content{
-    font-size: 1.5rem;
-    padding-left: .5rem;
+.video-content {
+  font-size: 1.5rem;
+  padding-left: 0.5rem;
 }
 
-.video-content span{
-    font-size: 1.2rem;
-    color: var(--ligtest-color);
+.video-content span {
+  font-size: 1.2rem;
+  color: var(--ligtest-color);
 }
-.creator{
-    font-size: 1.2rem;
-    margin-top: 5px;
-}
-
-.avatar-box{
-    display: flex;
-    justify-content: center;
-    align-items: center ;
-    /* padding: .5rem; */
+.creator {
+  font-size: 1.2rem;
+  margin-top: 5px;
 }
 
-.avatar{
-    margin-right: 0;
-}
-.avatar-box img{
-    height: 4rem;
-    width: 4rem;
-    object-fit: cover;
-    overflow: hidden;
-}
-.action-icons .icon{
-    fill: var(--ligtest-color);
-    width: 2rem;
-    height: 2rem;
+.avatar-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.avatar {
+  margin-right: 0;
+}
+.avatar-box img {
+  height: 4rem;
+  width: 4rem;
+  object-fit: cover;
+  overflow: hidden;
+}
+.action-icons .icon {
+  fill: var(--ligtest-color);
+  width: 2rem;
+  height: 2rem;
+}
+
+/* action-card */
+
+.action-card {
+  min-width: 15rem;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  bottom: -5rem;
+  z-index: 2;
+  border-radius: 5px;
+}
+
+.action-button {
+  font-size: 1.5rem;
+  border: none;
+  background-color: var(--white-color);
+  padding: 8px 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+p {
+  width: 65%;
+}
+
+.action-icon {
+  height: 1.3rem;
+  width: 1.3rem;
+}
+
+.btnradius1 {
+  border-radius: 5px 5px 0 0;
+}
+
+.btnradius2 {
+  border-radius: 0 0 5px 5px;
+}
+
+.action-button:hover {
+  background-color: var(--light-color);
+}
 
 @media screen and (max-width: 1200px) {
-    .video-card-container{
-        width: 40%;
-        height: 20rem;
-    }
+  .video-card-container {
+    width: 40%;
+    height: 20rem;
+  }
 }
 
 @media screen and (max-width: 800px) {
-    .video-card-container{
-        width: 45%;
-    }
-} 
+  .video-card-container {
+    width: 45%;
+  }
+}
 
 @media screen and (max-width: 600px) {
-    .video-card-container{
-        width: 90%;
-        padding: 0;
-    }
+  .video-card-container {
+    width: 90%;
+    padding: 0;
+  }
 
-    .video-info{
-        justify-content: flex-start;
-        padding: 1rem;
-    }
+  .video-info {
+    justify-content: flex-start;
+    padding: 1rem;
+  }
 
-    .video-content{
-        width: 90%;
-    }
-} 
+  .video-content {
+    width: 90%;
+  }
+}

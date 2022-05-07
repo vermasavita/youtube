@@ -36,6 +36,9 @@ body {
   background-color: var(--info-color) !important;
 }
 
+.Toastify__toast--info{
+  background-color: var(--black-color) !important;
+}
 .Toastify__toast {
   font-size: 1.5rem;
 }

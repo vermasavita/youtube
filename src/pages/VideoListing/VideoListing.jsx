@@ -1,20 +1,44 @@
 import { SideBar, VideoCard } from "../../components";
 import "./videoListing.css";
-import { getCategoryHandler, getVideosHandler } from "../../services";
-import { useVideoCategory } from "../../context";
+import { toast } from "react-toastify";
+import {
+  getCategoryHandler,
+  getVideosHandler,
+  addItemToWatchLaterVideos,
+} from "../../services";
+
+import { useAuth, useVideoCategory, useWatchLater } from "../../context";
 import { useState, useEffect } from "react";
 import { filterCategoryVideos } from "../../utils/filerCategoryVideos";
+import { useNavigate } from "react-router-dom";
 
 const VideoListing = () => {
+  const navigate = useNavigate();
+  const {
+    authState: { token },
+  } = useAuth();
   const [categories, setCategories] = useState([]);
   const [videos, setvideos] = useState([]);
   const { videoCategoryState, videoCategoryDispatch } = useVideoCategory();
+  const { watchLaterDispatch } = useWatchLater();
 
   const { category } = videoCategoryState;
 
   const callGetVideosAndCategoryHandler = () => {
     getCategoryHandler(setCategories);
     getVideosHandler(setvideos);
+  };
+
+  const callAddItemToWatchLaterVideos = (_id) => {
+    if(token){
+      const video = videos.find(item => item._id === _id)
+      addItemToWatchLaterVideos(video, token, watchLaterDispatch);
+      toast.info("Saved to Watch Later")
+
+    }
+      else{
+        navigate("/login")
+      }
   };
 
   useEffect(() => callGetVideosAndCategoryHandler(), []);
@@ -37,7 +61,9 @@ const VideoListing = () => {
             </button>
             {categories.map((item) => (
               <button
-                className={`btn contained ${category === item.categoryName ? "active" : ""}`}
+                className={`btn contained ${
+                  category === item.categoryName ? "active" : ""
+                }`}
                 key={item._id}
                 onClick={() =>
                   videoCategoryDispatch({
@@ -60,6 +86,7 @@ const VideoListing = () => {
               videoLength={video.videoLength}
               videothumbnail={video.thumbnail}
               videoCreator={video.creator}
+              callAddItemToWatchLaterVideos={callAddItemToWatchLaterVideos}
             />
           ))}
         </div>
