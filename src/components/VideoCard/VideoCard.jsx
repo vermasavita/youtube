@@ -1,5 +1,6 @@
 import "./videoCard.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const VideoCard = ({
   videoId,
@@ -9,10 +10,11 @@ const VideoCard = ({
   videoCreator,
   callAddItemToWatchLaterVideos,
 }) => {
+  const navigate = useNavigate();
   const [actionBox, setActionBox] = useState(false);
 
   return (
-    <div className="video-card-container" key={videoId}>
+    <div className="video-card-container" key={videoId} onClick={() => navigate(`/explore/${videoId}`)}>
       <div className="video-image">
         <img src={videothumbnail} alt={videoTitle} />
         <div className="video-time">{videoLength}</div>
