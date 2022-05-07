@@ -20,6 +20,9 @@
     margin-right: 1.5rem;
 }
 
+.featured-category{
+    margin-bottom: 2rem;
+}
 .video-listing .featured-category .btn:active{
  background-color: var(--ligtest-color);
 }
