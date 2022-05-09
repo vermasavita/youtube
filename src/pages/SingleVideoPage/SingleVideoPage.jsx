@@ -2,8 +2,34 @@ import "./single-video-page.css";
 import ReactPlayer from "react-player";
 import { ExploreVideo } from "./component/ExploreVideo";
 import { SideBar } from "../../components";
+import { useParams } from "react-router-dom";
+import { getSingleVideoHandler, addItemToWatchLaterVideos } from "../../services";
+import { useState, useEffect } from "react";
+import { useAuth, useWatchLater } from "../../context";
+import { toast } from "react-toastify";
 
 const SingleVideoPage = () => {
+  const { videoId } = useParams();
+  const [singleVideo, setSingleVideo] = useState({});
+  const {
+    authState: { token },
+  } = useAuth();
+  const {
+    watchLaterState: { watchLater },
+    watchLaterDispatch,
+  } = useWatchLater();
+
+  const callAddItemToWatchLaterVideos = (_id) => {
+    if (token) {
+      addItemToWatchLaterVideos(singleVideo, token, watchLaterDispatch);
+      toast.info("Saved to Watch Later");
+    } else {
+      navigate("/login");
+    }
+  };
+
+  useEffect(() => getSingleVideoHandler(videoId, setSingleVideo), []);
+
   return (
     <div className="video-listing-container">
       <div>
@@ -15,13 +41,10 @@ const SingleVideoPage = () => {
             <ReactPlayer
               width="100%"
               height="100%"
-              url={`https://www.youtube.com/watch?v=2j_9-yM4X8s`}
-              controls="true"
+              url={`https://www.youtube.com/embed/${singleVideo.youtubeId}`}
             />
           </div>
-          <div className="video-title">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit
-          </div>
+          <div className="video-title">{singleVideo.title}</div>
           <div className="single-video-info">
             <p className="total-view">23k</p>
             <div className="action-items">
@@ -35,7 +58,10 @@ const SingleVideoPage = () => {
                 </svg>
                 <span>Like</span>
               </button>
-              <button className="action-btns">
+              <button
+                className="action-btns"
+                onClick={() => callAddItemToWatchLaterVideos(singleVideo._id)}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="action-icons"
@@ -66,20 +92,12 @@ const SingleVideoPage = () => {
               />
             </div>
             <div className="channel-name">
-              <h3>Savita Verma </h3>
+              <h3>{singleVideo.creator}</h3>
               <span>23.3M</span>
             </div>
           </div>
         </div>
         <div className="explore-video">
-          <ExploreVideo />
-          <ExploreVideo />
-          <ExploreVideo />
-          <ExploreVideo />
-          <ExploreVideo />
-          <ExploreVideo />
-          <ExploreVideo />
-          <ExploreVideo />
           <ExploreVideo />
         </div>
       </div>

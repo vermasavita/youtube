@@ -36,9 +36,9 @@ function App() {
         <Route path="/liked" element={<LikedVideo />} />
         <Route path="/watchlater" element={<WatchLaterVideo />} />
         <Route path="/history" element={<WatchHistory />} />
-        <Route path="/video" element={<SingleVideoPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/explore/:videoId" element={<SingleVideoPage/>} />
       </Routes>
     </div>
   );

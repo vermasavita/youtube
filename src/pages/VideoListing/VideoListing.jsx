@@ -30,15 +30,13 @@ const VideoListing = () => {
   };
 
   const callAddItemToWatchLaterVideos = (_id) => {
-    if(token){
-      const video = videos.find(item => item._id === _id)
+    if (token) {
+      const video = videos.find((item) => item._id === _id);
       addItemToWatchLaterVideos(video, token, watchLaterDispatch);
-      toast.info("Saved to Watch Later")
-
+      toast.info("Saved to Watch Later");
+    } else {
+      navigate("/login");
     }
-      else{
-        navigate("/login")
-      }
   };
 
   useEffect(() => callGetVideosAndCategoryHandler(), []);

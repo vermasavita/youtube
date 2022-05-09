@@ -5,6 +5,7 @@ export { getVideosHandler } from "./videoService/getVideos";
 export { getWatchLaterVideosHandler } from './watchLater/getWatchLater';
 export { addItemToWatchLaterVideos } from './watchLater/addToWatchLaterService';
 export { removeItemFromWatchLaterVideos } from './watchLater/removeFromWatchLater';
+export { getSingleVideoHandler } from './videoService/getSingleVideo';
 
 
 
