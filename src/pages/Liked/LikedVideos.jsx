@@ -9,7 +9,6 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const LikedVideo = () => {
-  const { videoId } = useParams();
   const {
     authState: { token },
   } = useAuth();

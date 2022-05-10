@@ -3,6 +3,7 @@ import "./App.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Navbar, SideBar } from "./components";
+import { RequiresAuth } from "./RequiresAuth";
 import {
   Login,
   Signup,
@@ -32,13 +33,41 @@ function App() {
       />
       <Routes>
         <Route path="/" element={<VideoListing />} />
-        <Route path="/playlist" element={<Playlist />} />
-        <Route path="/liked" element={<LikedVideo />} />
-        <Route path="/watchlater" element={<WatchLaterVideo />} />
-        <Route path="/history" element={<WatchHistory />} />
+        <Route
+          path="/playlist"
+          element={
+            <RequiresAuth>
+              <Playlist />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/liked"
+          element={
+            <RequiresAuth>
+              <LikedVideo />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/watchlater"
+          element={
+            <RequiresAuth>
+              <WatchLaterVideo />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/history"
+          element={
+            <RequiresAuth>
+              <WatchHistory />
+            </RequiresAuth>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/explore/:videoId" element={<SingleVideoPage/>} />
+        <Route path="/explore/:videoId" element={<SingleVideoPage />} />
       </Routes>
     </div>
   );
