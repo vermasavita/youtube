@@ -1,18 +1,24 @@
 import "../../Playlist/component/playlist.css";
-const WatchHistoryVideoCard = () => {
+const WatchHistoryVideoCard = ({
+  historyVideoId,
+  historyVideoThumbnail,
+  historyVideoTitle,
+  historyVideoCreator,
+  callRemoveVideoFromHistoryHandler,
+}) => {
   return (
-    <div className="playlist-card">
+    <div className="playlist-card" key={historyVideoId}>
       <div className="playlist-card-image">
-        <img
-          src="https://images.unsplash.com/photo-1644982649363-fae51da44eac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
-          alt=""
-        />
+        <img src={historyVideoThumbnail} alt="" />
       </div>
       <div className="playlist-card-info">
         <div className="playlist-card-content">
-          The internet’s source of freely-usable images. | <span>Savita Verma</span>
+          {historyVideoTitle} | <span>{historyVideoCreator}</span>
         </div>
-        <div className="playlist-card-action">
+        <div
+          className="playlist-card-action"
+          onClick={() => callRemoveVideoFromHistoryHandler(historyVideoId)}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="icon"

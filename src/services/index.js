@@ -9,3 +9,7 @@ export { getSingleVideoHandler } from "./videoService/getSingleVideo";
 export { getLikedVideosHandler } from "./likeService/getLikeService";
 export { addItemToLikedVideos } from "./likeService/addToLikeService";
 export { removeItemFromLikedVideos } from "./likeService/removeFromLikeService";
+export { getHistoryVideosHandler } from "./historyService/getService";
+export { addVideoToHistoryHandler } from "./historyService/addToHistory";
+export { removeVideoFromHistoryHandler } from "./historyService/removeFromHistory";
+export { clearHistoryHandler } from "./historyService/clearHistoryService";

@@ -6,7 +6,6 @@ import {
 } from "../../services";
 import { useLike, useAuth } from "../../context";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
 
 const LikedVideo = () => {
   const {
@@ -20,8 +19,7 @@ const LikedVideo = () => {
   const callRemoveItemFromLikedVideos = (_id) => {
     removeItemFromLikedVideos(_id, token, likeDispatch);
     toast.info("Removed from Liked Videos");
-  }
-
+  };
 
   useEffect(() => getLikedVideosHandler(token, likeDispatch), []);
   return (

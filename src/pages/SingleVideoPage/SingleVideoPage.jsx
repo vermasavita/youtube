@@ -9,9 +9,11 @@ import {
   removeItemFromWatchLaterVideos,
   addItemToLikedVideos,
   removeItemFromLikedVideos,
+  addVideoToHistoryHandler,
+  removeVideoFromHistoryHandler,
 } from "../../services";
 import { useState, useEffect } from "react";
-import { useAuth, useWatchLater, useLike } from "../../context";
+import { useAuth, useWatchLater, useLike, useHistory } from "../../context";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
@@ -24,6 +26,11 @@ const SingleVideoPage = () => {
   } = useAuth();
 
   const {
+    historyState: { history },
+    historyDispatch,
+  } = useHistory();
+
+  const {
     watchLaterState: { watchLater },
     watchLaterDispatch,
   } = useWatchLater();
@@ -33,7 +40,18 @@ const SingleVideoPage = () => {
     likeDispatch,
   } = useLike();
 
-  console.log(like);
+  //historyHandler
+
+  const callAddVideoToHistoryHandler = (_id) => {
+    if (token) {
+      if (!history.some((video) => video._id === _id)) {
+        addVideoToHistoryHandler(singleVideo, token, historyDispatch);
+      } else {
+        removeVideoFromHistoryHandler(singleVideo._id, token, historyDispatch);
+        addVideoToHistoryHandler(singleVideo, token, historyDispatch);
+      }
+    }
+  };
 
   //watchVideoHandler
   const callAddItemToWatchLaterVideos = (_id) => {
@@ -88,7 +106,8 @@ const SingleVideoPage = () => {
               width="100%"
               height="100%"
               url={`https://www.youtube.com/embed/${singleVideo.youtubeId}`}
-              controls="true"
+              controls={true}
+              onStart={callAddVideoToHistoryHandler}
             />
           </div>
           <div className="video-title">{singleVideo.title}</div>
