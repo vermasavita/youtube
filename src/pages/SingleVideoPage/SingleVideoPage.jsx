@@ -7,8 +7,10 @@ import { getSingleVideoHandler, addItemToWatchLaterVideos } from "../../services
 import { useState, useEffect } from "react";
 import { useAuth, useWatchLater } from "../../context";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const SingleVideoPage = () => {
+  const navigate  = useNavigate();
   const { videoId } = useParams();
   const [singleVideo, setSingleVideo] = useState({});
   const {
@@ -42,11 +44,12 @@ const SingleVideoPage = () => {
               width="100%"
               height="100%"
               url={`https://www.youtube.com/embed/${singleVideo.youtubeId}`}
+              controls="true"
             />
           </div>
           <div className="video-title">{singleVideo.title}</div>
           <div className="single-video-info">
-            <p className="total-view">23k</p>
+            <p className="total-view">{singleVideo.viewCount}</p>
             <div className="action-items">
               <button className="action-btns">
                 <svg
@@ -86,14 +89,14 @@ const SingleVideoPage = () => {
           <div className="channel-intro">
             <div className="avatar-box">
               <img
-                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                src={singleVideo.channelImg}
                 alt="avatar image"
                 className="avatar"
               />
             </div>
             <div className="channel-name">
               <h3>{singleVideo.creator}</h3>
-              <span>23.3M</span>
+              <span>{singleVideo.subscriber}</span>
             </div>
           </div>
         </div>

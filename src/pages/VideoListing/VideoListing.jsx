@@ -81,6 +81,9 @@ const VideoListing = () => {
               key={video._id}
               videoId={video._id}
               videoTitle={video.title}
+              videoView={video.viewCount}
+              subsriber={video.subscriber}
+              channelImg={video.channelImg}
               videoLength={video.videoLength}
               videothumbnail={video.thumbnail}
               videoCreator={video.creator}

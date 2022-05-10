@@ -6,6 +6,9 @@ const VideoCard = ({
   videoId,
   videoTitle,
   videothumbnail,
+  videoView,
+  subsriber,
+  channelImg,
   videoLength,
   videoCreator,
   callAddItemToWatchLaterVideos,
@@ -22,13 +25,13 @@ const VideoCard = ({
       <div className="video-info">
         <div className="avatar-box" >
           <img
-            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+            src={channelImg}
             alt="avatar image"
             className="avatar"
           />
         </div>
         <div className="video-content">
-          {videoTitle} |<span> {videoCreator}</span>
+          {videoTitle} 
         </div>
         <div
           className="action-icons"

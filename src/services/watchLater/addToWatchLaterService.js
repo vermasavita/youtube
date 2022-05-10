@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const addItemToWatchLaterVideos = async (video, token, watchLaterDispatch) => {
   try {
@@ -17,7 +18,7 @@ const addItemToWatchLaterVideos = async (video, token, watchLaterDispatch) => {
       throw new Error();
     }
   } catch (error) {
-    console.log(response);
+    console.log(error)
   }
 };
 
