@@ -17,7 +17,7 @@ const addItemToWatchLaterVideos = async (video, token, watchLaterDispatch) => {
       throw new Error();
     }
   } catch (error) {
-    console.log(response);
+    console.log(error)
   }
 };
 

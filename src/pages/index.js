@@ -5,3 +5,4 @@ export { Playlist } from "./Playlist/Playlist";
 export { LikedVideo } from "./Liked/LikedVideos";
 export { Signup } from "./Authentication/Signup/Signup";
 export { Login } from "./Authentication/Login/Login";
+export { SingleVideoPage } from "./SingleVideoPage/SingleVideoPage";

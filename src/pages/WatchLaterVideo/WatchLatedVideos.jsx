@@ -12,7 +12,6 @@ const WatchLaterVideo = () => {
   const {
     authState: { token },
   } = useAuth();
-  console.log(token);
 
   const { watchLaterState, watchLaterDispatch } = useWatchLater();
   const { watchLater } = watchLaterState;

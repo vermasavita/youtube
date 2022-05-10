@@ -7,7 +7,6 @@ const getWatchLaterVideosHandler = async (token, watchLaterDispatch) => {
         headers: { authorization: token },
       });
 
-      console.log(response)
       if (response.status === 200) {
         watchLaterDispatch({
           type: "GET_WATCHLATER",
@@ -17,7 +16,7 @@ const getWatchLaterVideosHandler = async (token, watchLaterDispatch) => {
         throw new Error();
       }
     } catch (error) {
-      console.log(response);
+      console.log(error);
     }
   }
 };

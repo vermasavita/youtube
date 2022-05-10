@@ -1,18 +1,21 @@
 import "../../Playlist/component/playlist.css";
-const LikedVideoCard = () => {
+const LikedVideoCard = ({
+  likedVideoId,
+  likedVideoThumbnail,
+  likedVideoTitle,
+  likedVideoCreator,
+  callRemoveItemFromLikedVideos
+}) => {
   return (
-    <div className="playlist-card">
+    <div className="playlist-card" key={likedVideoId}>
       <div className="playlist-card-image">
-        <img
-          src="https://images.unsplash.com/photo-1644982649363-fae51da44eac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
-          alt=""
-        />
+        <img src={likedVideoThumbnail} alt={likedVideoTitle} />
       </div>
       <div className="playlist-card-info">
         <div className="playlist-card-content">
-          The internet’s source of freely-usable images. | <span>Savita Verma</span>
+          {likedVideoTitle} | <span>{likedVideoCreator}</span>
         </div>
-        <div className="playlist-card-action">
+        <div className="playlist-card-action" onClick={() => callRemoveItemFromLikedVideos(likedVideoId)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="icon"
