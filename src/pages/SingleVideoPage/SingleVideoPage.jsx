@@ -1,8 +1,8 @@
 import "./single-video-page.css";
 import ReactPlayer from "react-player";
-import { ExploreVideo } from "./component/ExploreVideo";
+import { Notes } from "./component/Notes";
 import { SideBar } from "../../components";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import {
   getSingleVideoHandler,
   addItemToWatchLaterVideos,
@@ -13,9 +13,14 @@ import {
   removeVideoFromHistoryHandler,
 } from "../../services";
 import { useState, useEffect } from "react";
-import { useAuth, useWatchLater, useLike, useHistory } from "../../context";
+import {
+  useAuth,
+  useWatchLater,
+  useLike,
+  useHistory,
+  usePlaylistModal,
+} from "../../context";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 
 const SingleVideoPage = () => {
   const navigate = useNavigate();
@@ -39,6 +44,8 @@ const SingleVideoPage = () => {
     likeState: { like },
     likeDispatch,
   } = useLike();
+
+  const { playlistModalDispatch } = usePlaylistModal();
 
   //historyHandler
 
@@ -68,7 +75,8 @@ const SingleVideoPage = () => {
 
   const callCheckWatchLaterAction = (_id) => {
     return checkWatchLaterAction(_id)
-      ? removeItemFromWatchLaterVideos(_id, token, watchLaterDispatch)
+      ? (removeItemFromWatchLaterVideos(_id, token, watchLaterDispatch),
+        toast.info("Removed from Watch Later"))
       : callAddItemToWatchLaterVideos(_id);
   };
 
@@ -92,6 +100,19 @@ const SingleVideoPage = () => {
       : CallAddItemToLikedVideos(_id);
   };
 
+  //playlistHnadler
+
+  const playlistModal = (_id) => {
+    if (token) {
+      playlistModalDispatch({
+        type: "OPEN_MODAL",
+        payload: { isActive: true, video: singleVideo },
+      });
+    } else {
+      navigate("/login");
+      toast.warning("You're not logged in");
+    }
+  };
   useEffect(() => getSingleVideoHandler(videoId, setSingleVideo), []);
 
   return (
@@ -152,7 +173,10 @@ const SingleVideoPage = () => {
                 </svg>
                 <span>Watch Later</span>
               </button>
-              <button className="action-btns">
+              <button
+                className="action-btns"
+                onClick={() => playlistModal(singleVideo._id)}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="action-icons"
@@ -179,7 +203,7 @@ const SingleVideoPage = () => {
           </div>
         </div>
         <div className="explore-video">
-          <ExploreVideo />
+          <Notes />
         </div>
       </div>
     </div>

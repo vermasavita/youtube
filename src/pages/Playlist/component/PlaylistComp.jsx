@@ -6,70 +6,38 @@ import {
   useWatchLater,
 } from "./../../../context";
 import {
-  getVideosFromPlaylistHandler,
-  removeItemFromLikedVideos,
-  removeItemFromWatchLaterVideos,
-  removeVideoFromHistoryHandler,
   removeVideoFromPlaylistHandler,
 } from "../../../services";
 import "./playlist.css";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const PlaylistCard = ({
-  _id,
-  thumbnail,
-  title,
-  creator,
-  playlistId,
-  setPlaylist,
-}) => {
-  const location = useLocation();
+const PlaylistCard = ({ _id, thumbnail, title, creator, playlistId }) => {
   const navigate = useNavigate();
   const {
     authState: { token },
   } = useAuth();
-  const { watchLaterDispatch } = useWatchLater();
-  const { historyDispatch } = useHistory();
-  const { likeDispatch } = useLike();
   const { playlistDispatch } = usePlaylist();
 
-  const checkDeleteAction = (event) => {
-    event.stopPropagation();
-    switch (location.pathname) {
-      case "/watchlater":
-        removeItemFromWatchLaterVideos(_id, token, watchLaterDispatch);
-      case "/history":
-        removeVideoFromHistoryHandler(_id, token, historyDispatch);
-      case "/liked":
-        removeItemFromLikedVideos(_id, token, likeDispatch);
-
-      case `playlist/${playlistId}`:
-        removeVideoFromPlaylistHandler(
-          playlistId,
-          _id,
-          token,
-          playlistDispatch
-        );
-        getVideosFromPlaylistHandler(playlistId, token, setPlaylist);
-        break;
-      default:
-        break;
-    }
+  const callRemoveVideoFromPlaylistHandler = (_id) => {
+    removeVideoFromPlaylistHandler(playlistId, _id, token, playlistDispatch);
   };
+
   return (
-    <div
-      className="playlist-card"
-      key={_id}
-      onClick={() => navigate(`/explore/${_id}`)}
-    >
-      <div className="playlist-card-image">
+    <div className="playlist-card" key={_id}>
+      <div
+        className="playlist-card-image"
+        onClick={() => navigate(`/explore/${_id}`)}
+      >
         <img src={thumbnail} alt={title} />
       </div>
       <div className="playlist-card-info">
         <div className="playlist-card-content">
           {title} | <span>{creator}</span>
         </div>
-        <div className="playlist-card-action" onClick={checkDeleteAction}>
+        <div
+          className="playlist-card-action"
+          onClick={() => callRemoveVideoFromPlaylistHandler(_id)}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="icon"

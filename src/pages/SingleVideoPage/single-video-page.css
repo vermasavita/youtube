@@ -17,7 +17,7 @@
 }
 
 .video-play-box .video-title {
-  font-size: 2rem;
+  font-size: 1.7rem;
   margin-top: 1.2rem;
 }
 
@@ -75,7 +75,7 @@
 }
 
 .channel-name h3 {
-  font-size: 2rem;
+  font-size: 1.7rem;
 }
 
 .channel-intro .channel-name span {
@@ -87,59 +87,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 60rem;
-  overflow-y: scroll;
-  /* box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px; */
 }
 
-/* explore video container */
-
-.explore-video-container {
+.explore-video .video-notecontainer {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  background: var(--light-color);
   width: 80%;
-  display: flex;
-  margin-top: 2px;
-  box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px,
-    rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
-}
-
-.explore-video-sub-container {
-  display: flex;
-  width: 100%;
-}
-
-.imgae-container1 {
-  width: 50%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--black-color);
-}
-
-.imgae-container1 img {
-  width: 100%;
   height: 80%;
-  object-fit: cover;
 }
-
-.explore-video-info {
-  display: flex;
-  flex-direction: column;
-  margin: 7px;
-}
-
-.explore-video-info h4 {
-  font-size: 1.2rem;
-}
-
-.explore-video-info span {
-  color: var(--ligtest-color);
-}
-
-.explore-action-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.video-notecontainer h3 {
+  margin: 2rem;
+  font-size: 1.5rem;
 }
 
 @media screen and (max-width: 1200px) {
@@ -151,14 +109,25 @@
     width: 90%;
   }
 
-  .imgae-container1 {
-    width: 70%;
+  .single-video-info{
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .single-video-info .total-view{
+    width: 100%;
+  }
+  .single-video-info .action-items {
+    width: 100%;
+    margin-top: 1rem;
+    justify-content: flex-start;
   }
 }
 
 @media screen and (max-width: 1100px) {
   .video-player {
-    height: 40rem;
+    margin-top: 10rem;
+    height: 30rem;
   }
 }
 
@@ -173,64 +142,26 @@
   }
 
   .single-video-container .explore-video {
-    width: 90%;
+    width: 100%;
     margin: 4rem auto;
   }
-
-  .explore-video-container {
-    width: 90%;
+  .explore-video .video-notecontainer {
+    height: 20rem;
+    margin-bottom: 4rem;
   }
-
-  .imgae-container1 {
-    width: 70%;
-  }
+ 
 }
 
 @media screen and (max-width: 600px) {
-  .video-player {
+  /* .video-player {
     height: 30rem;
-  }
-
-  .explore-video-container .explore-video-sub-container {
-    height: 15rem;
-  }
-
-  .imgae-container1 {
-    width: 80%;
-  }
-
-  .explore-video-info {
-    align-items: flex-start;
-    justify-content: center;
-    gap: 1rem;
-  }
-
-  .explore-video-info h4 {
-    font-size: 1.5rem;
-  }
-
-  .explore-video-info span {
-    font-size: 1.3rem;
-  }
+  } */
 }
 
 @media screen and (max-width: 500px) {
   .video-player {
     height: 20rem;
     width: 100%;
-  }
-
-  .explore-video-container {
-    flex-direction: column;
-  }
-
-  .imgae-container1 {
-    width: 90%;
-    margin: auto;
-  }
-
-  .explore-video-info {
-    margin: auto;
-    width: 85%;
+    margin: 0;
   }
 }
