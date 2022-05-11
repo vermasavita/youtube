@@ -6,3 +6,4 @@ export { LikedVideo } from "./Liked/LikedVideos";
 export { Signup } from "./Authentication/Signup/Signup";
 export { Login } from "./Authentication/Login/Login";
 export { SingleVideoPage } from "./SingleVideoPage/SingleVideoPage";
+export { SinglePlaylist } from "./SinglePlaylistPage/SinglePlaylist";

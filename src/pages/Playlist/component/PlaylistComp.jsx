@@ -1,18 +1,75 @@
+import {
+  useAuth,
+  useHistory,
+  useLike,
+  usePlaylist,
+  useWatchLater,
+} from "./../../../context";
+import {
+  getVideosFromPlaylistHandler,
+  removeItemFromLikedVideos,
+  removeItemFromWatchLaterVideos,
+  removeVideoFromHistoryHandler,
+  removeVideoFromPlaylistHandler,
+} from "../../../services";
 import "./playlist.css";
-const PlaylistCard = () => {
+import { useLocation, useNavigate } from "react-router-dom";
+
+const PlaylistCard = ({
+  _id,
+  thumbnail,
+  title,
+  creator,
+  playlistId,
+  setPlaylist,
+}) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const {
+    authState: { token },
+  } = useAuth();
+  const { watchLaterDispatch } = useWatchLater();
+  const { historyDispatch } = useHistory();
+  const { likeDispatch } = useLike();
+  const { playlistDispatch } = usePlaylist();
+
+  const checkDeleteAction = (event) => {
+    event.stopPropagation();
+    switch (location.pathname) {
+      case "/watchlater":
+        removeItemFromWatchLaterVideos(_id, token, watchLaterDispatch);
+      case "/history":
+        removeVideoFromHistoryHandler(_id, token, historyDispatch);
+      case "/liked":
+        removeItemFromLikedVideos(_id, token, likeDispatch);
+
+      case `playlist/${playlistId}`:
+        removeVideoFromPlaylistHandler(
+          playlistId,
+          _id,
+          token,
+          playlistDispatch
+        );
+        getVideosFromPlaylistHandler(playlistId, token, setPlaylist);
+        break;
+      default:
+        break;
+    }
+  };
   return (
-    <div className="playlist-card">
+    <div
+      className="playlist-card"
+      key={_id}
+      onClick={() => navigate(`/explore/${_id}`)}
+    >
       <div className="playlist-card-image">
-        <img
-          src="https://images.unsplash.com/photo-1644982649363-fae51da44eac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
-          alt=""
-        />
+        <img src={thumbnail} alt={title} />
       </div>
       <div className="playlist-card-info">
         <div className="playlist-card-content">
-          The internet’s source of freely-usable images. | <span>Savita Verma</span>
+          {title} | <span>{creator}</span>
         </div>
-        <div className="playlist-card-action">
+        <div className="playlist-card-action" onClick={checkDeleteAction}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="icon"

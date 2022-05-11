@@ -7,6 +7,8 @@ import {
   AuthProvider,
   HistoryProvider,
   LikeProvider,
+  PlaylistModalProvider,
+  PlaylistProvider,
   SidebarProvider,
   VideoCatgoryProvider,
   WatchLaterProvider,
@@ -24,7 +26,11 @@ ReactDOM.render(
             <WatchLaterProvider>
               <LikeProvider>
                 <HistoryProvider>
-                  <App />
+                  <PlaylistModalProvider>
+                    <PlaylistProvider>
+                      <App />
+                    </PlaylistProvider>
+                  </PlaylistModalProvider>
                 </HistoryProvider>
               </LikeProvider>
             </WatchLaterProvider>
