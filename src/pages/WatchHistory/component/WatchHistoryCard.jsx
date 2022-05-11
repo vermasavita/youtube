@@ -1,23 +1,28 @@
+import { useNavigate } from "react-router-dom";
 import "../../Playlist/component/playlist.css";
 const WatchHistoryVideoCard = ({
-  historyVideoId,
-  historyVideoThumbnail,
-  historyVideoTitle,
-  historyVideoCreator,
+  _id,
+  thumbnail,
+  title,
+  creator,
   callRemoveVideoFromHistoryHandler,
 }) => {
+  const navigate = useNavigate();
   return (
-    <div className="playlist-card" key={historyVideoId}>
-      <div className="playlist-card-image">
-        <img src={historyVideoThumbnail} alt="" />
+    <div className="playlist-card" key={_id}>
+      <div
+        className="playlist-card-image"
+        onClick={() => navigate(`/explore/${_id}`)}
+      >
+        <img src={thumbnail} alt={title} />
       </div>
       <div className="playlist-card-info">
         <div className="playlist-card-content">
-          {historyVideoTitle} | <span>{historyVideoCreator}</span>
+          {title} | <span>{creator}</span>
         </div>
         <div
           className="playlist-card-action"
-          onClick={() => callRemoveVideoFromHistoryHandler(historyVideoId)}
+          onClick={() => callRemoveVideoFromHistoryHandler(_id)}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

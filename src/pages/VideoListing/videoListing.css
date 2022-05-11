@@ -1,5 +1,7 @@
 .video-listing-container {
   display: flex;
+  justify-content: flex-start;
+  height: calc(100vh - 5rem);
 }
 
 .video-listing {

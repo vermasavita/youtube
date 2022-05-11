@@ -24,7 +24,6 @@ const PlaylistModal = () => {
   const { playlistState, playlistDispatch } = usePlaylist();
 
   const { playlists } = playlistState;
-  console.log(playlists);
 
   const {
     watchLaterState: { watchLater },
@@ -33,7 +32,7 @@ const PlaylistModal = () => {
 
   const [newPlaylist, setNewPlaylist] = useState({
     title: "",
-    description: "",
+    description: "haha",
   });
 
   const playlistNameHandler = (event) => {
@@ -54,6 +53,7 @@ const PlaylistModal = () => {
     if (checkPlaylistName(newPlaylist.title)) {
       addNewPlaylistHandler(newPlaylist, token, playlistDispatch, video);
       setOpenCreatePlaylist(false);
+      
       playlistModalDispatch({ type: "CLOSE_MODAL" });
     }
     setNewPlaylist({ ...newPlaylist, title: "" });
@@ -61,12 +61,11 @@ const PlaylistModal = () => {
 
   const checkVideoInPlaylist = (_id) => {
     const playlist = playlists.find((item) => item._id === _id);
-    return playlist.videos.some((item) => item._id, video._id);
+    return playlist.videos.some((item) => item._id === video._id);
   };
 
- 
   const callVideoPlaylistAction = (_id) => {
-    if (!checkVideoInPlaylist(_id)) {
+    if (checkVideoInPlaylist(_id)) {
       removeVideoFromPlaylistHandler(_id, video._id, token, playlistDispatch);
     } else {
       addVideoToPlaylistHandler(_id, video, token, playlistDispatch);
@@ -95,7 +94,7 @@ const PlaylistModal = () => {
 
       <div className="playlist-modal-box">
         <div className="playlist-modal-title">
-          <div className="modal-title">Save video to..</div>
+          <div className="modal-title">Save video to...</div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="action-icons"
@@ -117,9 +116,8 @@ const PlaylistModal = () => {
             <label>Watch Later</label>
           </div>
           {playlists.map(({ _id, title }) => (
-            <div>
+            <div className="next-playlist" key={_id}>
               <input
-                className="next-playlist"
                 type="checkbox"
                 id={title}
                 checked={checkVideoInPlaylist(_id)}
@@ -150,7 +148,7 @@ const PlaylistModal = () => {
               className="new-playlist"
               placeholder="Enter Playlist Name"
               required
-              value={newPlaylist.head}
+              value={newPlaylist.title}
               onChange={playlistNameHandler}
             />
             <button className="close-ipt" onClick={callNewPlaylistCreator}>

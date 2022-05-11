@@ -25,6 +25,7 @@ const WatchHistory = () => {
 
   const callClearHistoryHandler = () => {
     clearHistoryHandler(token, historyDispatch);
+    toast.info("Removed All");
   };
 
   useEffect(() => getHistoryVideosHandler(token, historyDispatch), []);
@@ -33,12 +34,12 @@ const WatchHistory = () => {
       <div>
         <SideBar />
       </div>
-      <div>
+      <div className="playlist-div">
         {history.length !== 0 ? (
           <>
             <h1> History Videos: {history.length}</h1>
             <button className="btn" onClick={callClearHistoryHandler}>
-              Clear
+              Clear History
             </button>
           </>
         ) : (
@@ -48,10 +49,7 @@ const WatchHistory = () => {
           {history.map((video) => (
             <WatchHistoryVideoCard
               key={video._id}
-              historyVideoId={video._id}
-              historyVideoTitle={video.title}
-              historyVideoThumbnail={video.thumbnail}
-              historyVideoCreator={video.creator}
+              {...video}
               callRemoveVideoFromHistoryHandler={
                 callRemoveVideoFromHistoryHandler
               }

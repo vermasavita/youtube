@@ -2,21 +2,24 @@
   display: flex;
   width: 40%;
   height: 15rem;
-  background-color: var(--light-color);
-  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 h1 {
-  text-align: center;
   padding: 2rem;
 }
 
+.video-listing-container .playlist-container{
+  display: flex;
+  justify-content: flex-start;
+}
 .playlist-card-image {
   width: 40%;
   height: 100%;
   display: flex;
   align-items: center;
   background-color: var(--black-color);
+  cursor: pointer;
 }
 
 .playlist-card-image img {
@@ -34,7 +37,7 @@ h1 {
 }
 
 .playlist-card-content {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 500;
   padding: 2rem;
   height: 80%;
@@ -82,9 +85,20 @@ h1 {
 }
 
 /* displayplaylist */
+.playlist-div{
+  width: calc(100vw - 20rem);
+}
+
+.playlist-div h4{
+  font-size: 1.5rem;
+}
+
+.playlist-btn{
+  margin-top: 4rem;
+}
 
 .display-playlist-container {
-  width: 30%;
+  min-width: 50%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -94,6 +108,7 @@ h1 {
   cursor: pointer;
   margin: auto;
   background-color: var(--ligtest-color);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .playlist-name {
@@ -176,7 +191,7 @@ h1 {
 
 
 .playlist-modal-container label {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin-left: 10px;
 }
 
@@ -196,7 +211,8 @@ h1 {
 }
 
 .create-playlist-btn span {
-  margin-left: 0.8rem;
+  margin-left: 10px;
+  font-size: 1.5rem;
 }
 
 .playlist-ipt-container {
@@ -234,21 +250,44 @@ h1 {
 }
 
 /* ------------------------------------ */
+@media screen and (max-width: 1100px) {
+  .playlist-card  {
+    width: 45%;
+  }
+  .playlist-card-image {
+    width: 60%;
+  }
+}
 @media screen and (max-width: 900px) {
-  .playlist-card-content {
-    font-size: 1.5rem;
+  .playlist-card  {
+    width: 80%;
+    height: 19rem;
   }
 }
 
 @media screen and (max-width: 700px) {
+  html{
+    font-size: 60%;
+  }
   .playlist-container {
     flex-direction: column;
   }
 
   .playlist-card {
-    width: 90%;
+    width: 80%;
+    height: 18rem;
   }
+
   .display-playlist-container {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  html{
+    font-size: 55%;
+  }
+  .playlist-card {
     width: 100%;
   }
 }

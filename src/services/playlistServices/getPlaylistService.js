@@ -17,7 +17,7 @@ const getAllPlaylistsHandler = async (token, playlistDispatch) => {
         throw new Error();
       }
     } catch (error) {
-      console.log();
+      console.log(error);
     }
   }
 };

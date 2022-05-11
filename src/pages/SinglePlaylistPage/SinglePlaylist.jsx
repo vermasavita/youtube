@@ -16,7 +16,7 @@ const SinglePlaylist = () => {
   const { playlistDispatch } = usePlaylist();
   const { playlistId } = useParams();
 
-  const callRemoveVideoFromPlaylistHandler = () => {
+  const callRemoveFromPlaylistHandler = () => {
     removePlaylistHandler(playlistId, token, playlistDispatch);
     navigate("/playlist");
   };
@@ -26,14 +26,14 @@ const SinglePlaylist = () => {
     []
   );
   return (
+    <>
     <div className="video-listing-container">
       <div>
         <SideBar />
       </div>
-      <div>
-        {playlist ? <h1> {playlist.title}</h1> : null}
-        {playlist ? <h4>{playlist.videos.length} videos</h4> : null}
-        <button className="btn" onClick={callRemoveVideoFromPlaylistHandler}>
+      <div className="playlist-div">
+        {playlist ? <h1> {playlist.title}: {playlist.videos.length}</h1> : null}
+        <button className="btn playlist-btn" onClick={callRemoveFromPlaylistHandler}>
           Delete
         </button>
         <div className="playlist-container">
@@ -50,6 +50,7 @@ const SinglePlaylist = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
