@@ -88,15 +88,8 @@ const VideoListing = () => {
             {categoryFilteredVideos.map((video) => (
               <VideoCard
                 key={video._id}
+                {...video}
                 videos={videos}
-                videoId={video._id}
-                videoTitle={video.title}
-                videoView={video.viewCount}
-                subsriber={video.subscriber}
-                channelImg={video.channelImg}
-                videoLength={video.videoLength}
-                videothumbnail={video.thumbnail}
-                videoCreator={video.creator}
                 callAddItemToWatchLaterVideos={callAddItemToWatchLaterVideos}
               />
             ))}

@@ -5,9 +5,9 @@ import { usePlaylistModal, useAuth } from "../../context";
 import { toast } from "react-toastify";
 
 const VideoCard = ({
-  videoId,
-  videoTitle,
-  videothumbnail,
+  _id,
+  title,
+  thumbnail,
   channelImg,
   videoLength,
   callAddItemToWatchLaterVideos,
@@ -15,18 +15,20 @@ const VideoCard = ({
 }) => {
   const navigate = useNavigate();
   const [actionBox, setActionBox] = useState(false);
-  const { authState: { token}} = useAuth();
-  const {playlistModalState, playlistModalDispatch} = usePlaylistModal();
+  const {
+    authState: { token },
+  } = useAuth();
+  const { playlistModalDispatch } = usePlaylistModal();
 
   const playlistModal = (event, videoId) => {
     event.stopPropagation();
     if (token) {
-      const video = videos.find((item) => item._id === videoId);
+      const video = videos.find((item) => item._id === _id);
       playlistModalDispatch({
         type: "OPEN_MODAL",
         payload: { isActive: true, video: video },
       });
-      setActionBox(false)
+      setActionBox(false);
     } else {
       navigate("/login");
       toast.warning("You're not logged in");
@@ -34,19 +36,16 @@ const VideoCard = ({
   };
 
   return (
-    <div className="video-card-container" key={videoId}>
-      <div
-        className="video-image"
-        onClick={() => navigate(`/explore/${videoId}`)}
-      >
-        <img src={videothumbnail} alt={videoTitle} />
+    <div className="video-card-container" key={_id}>
+      <div className="video-image" onClick={() => navigate(`/explore/${_id}`)}>
+        <img src={thumbnail} alt={title} />
         <div className="video-time">{videoLength}</div>
       </div>
       <div className="video-info">
         <div className="avatar-box">
           <img src={channelImg} alt="avatar image" className="avatar" />
         </div>
-        <div className="video-content">{videoTitle}</div>
+        <div className="video-content">{title}</div>
         <div
           className="action-icons"
           onClick={() => setActionBox((prev) => !prev)}
@@ -64,7 +63,7 @@ const VideoCard = ({
             <button
               className="action-button btnradius1"
               onClick={() => {
-                callAddItemToWatchLaterVideos(videoId), setActionBox(false);
+                callAddItemToWatchLaterVideos(_id), setActionBox(false);
               }}
             >
               <svg
@@ -78,7 +77,7 @@ const VideoCard = ({
             </button>
             <button
               className="action-button btnradius2"
-              onClick={(event) => playlistModal(event, videoId)}
+              onClick={(event) => playlistModal(event, _id)}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
