@@ -1,9 +1,6 @@
 import {
   useAuth,
-  useHistory,
-  useLike,
   usePlaylist,
-  useWatchLater,
 } from "./../../../context";
 import {
   removeVideoFromPlaylistHandler,

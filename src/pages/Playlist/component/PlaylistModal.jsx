@@ -32,7 +32,6 @@ const PlaylistModal = () => {
 
   const [newPlaylist, setNewPlaylist] = useState({
     title: "",
-    description: "haha",
   });
 
   const playlistNameHandler = (event) => {
