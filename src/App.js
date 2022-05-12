@@ -25,6 +25,9 @@ function App() {
   return (
     <div className="App">
       {isActive ? <PlaylistModal /> : null}
+      <Routes>
+      <Route path="/" element={<VideoListing />} />
+      </Routes>
       <Navbar />
       <ToastContainer
         position="top-right"
@@ -39,7 +42,6 @@ function App() {
         pauseOnHover
       />
       <Routes>
-        <Route path="/" element={<VideoListing />} />
         <Route
           path="/playlist"
           element={
