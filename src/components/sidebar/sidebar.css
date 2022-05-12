@@ -39,5 +39,6 @@
 @media screen and (max-width: 900px) {
   .sidebar.active{
     position: fixed;
+    top: 5.9%
   }
 }

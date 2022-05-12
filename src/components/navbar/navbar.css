@@ -42,6 +42,13 @@
   color: var(--black-color);
 }
 
+@media screen and (max-width: 900px) {
+  .header{
+    position: fixed;
+    z-index: 3;
+  }
+}
+
 @media screen and (max-width: 800px) {
   .logo{
     display: none;

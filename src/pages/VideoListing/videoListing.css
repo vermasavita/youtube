@@ -53,3 +53,9 @@
 .featured-category {
   margin-top: 2rem;
 }
+
+@media screen and (max-width: 900px) {
+  .video-listing-container{
+    padding-top: 6rem;
+  }
+}
