@@ -24,14 +24,15 @@ const VideoListing = () => {
   } = useAuth();
   const [categories, setCategories] = useState([]);
   const [videos, setvideos] = useState([]);
+  const [videoLoader, setVideoLoader] = useState(false);
   const { videoCategoryState, videoCategoryDispatch } = useVideoCategory();
   const { watchLaterDispatch } = useWatchLater();
-  
+
   const { category } = videoCategoryState;
 
   const callGetVideosAndCategoryHandler = () => {
     getCategoryHandler(setCategories);
-    getVideosHandler(setvideos);
+    getVideosHandler(setvideos, setVideoLoader);
   };
 
   const callAddItemToWatchLaterVideos = (_id) => {
@@ -49,10 +50,13 @@ const VideoListing = () => {
   const categoryFilteredVideos = filterCategoryVideos(category, videos);
 
   return (
-      <div className="video-listing-container">
-        <div>
-          <SideBar />
-        </div>
+    <div className="video-listing-container">
+      <div>
+        <SideBar />
+      </div>
+      {videoLoader ? (
+        <h1>Loading...</h1>
+      ) : (
         <div className="video-listing">
           <div className="featured-category">
             <div className="btn-flex">
@@ -98,7 +102,8 @@ const VideoListing = () => {
             ))}
           </div>
         </div>
-      </div>
+      )}
+    </div>
   );
 };
 
