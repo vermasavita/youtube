@@ -28,16 +28,17 @@ const WatchLaterVideo = () => {
       <div>
         <SideBar />
       </div>
-      <div>
-        {watchLater.length !== 0 ? <h1> Watch Later Videos: {watchLater.length}</h1>: <h1> No Videos in Watch Later</h1>}
+      <div className="playlist-div">
+        {watchLater.length !== 0 ? (
+          <h1> Watch Later Videos: {watchLater.length}</h1>
+        ) : (
+          <h1> No Videos in Watch Later</h1>
+        )}
         <div className="playlist-container">
           {watchLater.map((watchlaterv) => (
             <WatchLaterVideoCard
               key={watchlaterv._id}
-              watchlaterId={watchlaterv._id}
-              watchlaterTitle={watchlaterv.title}
-              watchlaterThumbnail={watchlaterv.thumbnail}
-              watchlaterCreator={watchlaterv.creator}
+              {...watchlaterv}
               callRemoveItemFromWatchLaterVideos={
                 callRemoveItemFromWatchLaterVideos
               }

@@ -6,7 +6,7 @@ import {
 } from "../../services";
 import { useLike, useAuth } from "../../context";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const LikedVideo = () => {
   const {
@@ -20,8 +20,7 @@ const LikedVideo = () => {
   const callRemoveItemFromLikedVideos = (_id) => {
     removeItemFromLikedVideos(_id, token, likeDispatch);
     toast.info("Removed from Liked Videos");
-  }
-
+  };
 
   useEffect(() => getLikedVideosHandler(token, likeDispatch), []);
   return (
@@ -29,7 +28,7 @@ const LikedVideo = () => {
       <div>
         <SideBar />
       </div>
-      <div>
+      <div className="playlist-div">
         {like.length !== 0 ? (
           <h1> Liked Videos: {like.length}</h1>
         ) : (
@@ -39,10 +38,7 @@ const LikedVideo = () => {
           {like.map((video) => (
             <LikedVideoCard
               key={video._id}
-              likedVideoId={video._id}
-              likedVideoTitle={video.title}
-              likedVideoThumbnail={video.thumbnail}
-              likedVideoCreator={video.creator}
+              {...video}
               callRemoveItemFromLikedVideos={callRemoveItemFromLikedVideos}
             />
           ))}

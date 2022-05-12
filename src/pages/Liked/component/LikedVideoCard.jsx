@@ -1,21 +1,29 @@
 import "../../Playlist/component/playlist.css";
+import { useNavigate } from "react-router-dom";
 const LikedVideoCard = ({
-  likedVideoId,
-  likedVideoThumbnail,
-  likedVideoTitle,
-  likedVideoCreator,
-  callRemoveItemFromLikedVideos
+  _id,
+  title,
+  creator,
+  thumbnail,
+  callRemoveItemFromLikedVideos,
 }) => {
+  const navigate = useNavigate();
   return (
-    <div className="playlist-card" key={likedVideoId}>
-      <div className="playlist-card-image">
-        <img src={likedVideoThumbnail} alt={likedVideoTitle} />
+    <div className="playlist-card" key={_id}>
+      <div
+        className="playlist-card-image"
+        onClick={() => navigate(`/explore/${_id}`)}
+      >
+        <img src={thumbnail} alt={title} />
       </div>
       <div className="playlist-card-info">
         <div className="playlist-card-content">
-          {likedVideoTitle} | <span>{likedVideoCreator}</span>
+          {title} | <span>{creator}</span>
         </div>
-        <div className="playlist-card-action" onClick={() => callRemoveItemFromLikedVideos(likedVideoId)}>
+        <div
+          className="playlist-card-action"
+          onClick={() => callRemoveItemFromLikedVideos(_id)}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="icon"

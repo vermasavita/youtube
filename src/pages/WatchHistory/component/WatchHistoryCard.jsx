@@ -1,18 +1,29 @@
+import { useNavigate } from "react-router-dom";
 import "../../Playlist/component/playlist.css";
-const WatchHistoryVideoCard = () => {
+const WatchHistoryVideoCard = ({
+  _id,
+  thumbnail,
+  title,
+  creator,
+  callRemoveVideoFromHistoryHandler,
+}) => {
+  const navigate = useNavigate();
   return (
-    <div className="playlist-card">
-      <div className="playlist-card-image">
-        <img
-          src="https://images.unsplash.com/photo-1644982649363-fae51da44eac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
-          alt=""
-        />
+    <div className="playlist-card" key={_id}>
+      <div
+        className="playlist-card-image"
+        onClick={() => navigate(`/explore/${_id}`)}
+      >
+        <img src={thumbnail} alt={title} />
       </div>
       <div className="playlist-card-info">
         <div className="playlist-card-content">
-          The internet’s source of freely-usable images. | <span>Savita Verma</span>
+          {title} | <span>{creator}</span>
         </div>
-        <div className="playlist-card-action">
+        <div
+          className="playlist-card-action"
+          onClick={() => callRemoveVideoFromHistoryHandler(_id)}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="icon"

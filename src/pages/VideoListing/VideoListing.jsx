@@ -6,8 +6,13 @@ import {
   getVideosHandler,
   addItemToWatchLaterVideos,
 } from "../../services";
-
-import { useAuth, useVideoCategory, useWatchLater } from "../../context";
+import { PlaylistModal } from "../Playlist/component/PlaylistModal";
+import {
+  useAuth,
+  usePlaylistModal,
+  useVideoCategory,
+  useWatchLater,
+} from "../../context";
 import { useState, useEffect } from "react";
 import { filterCategoryVideos } from "../../utils/filerCategoryVideos";
 import { useNavigate } from "react-router-dom";
@@ -21,7 +26,7 @@ const VideoListing = () => {
   const [videos, setvideos] = useState([]);
   const { videoCategoryState, videoCategoryDispatch } = useVideoCategory();
   const { watchLaterDispatch } = useWatchLater();
-
+  
   const { category } = videoCategoryState;
 
   const callGetVideosAndCategoryHandler = () => {
@@ -44,55 +49,56 @@ const VideoListing = () => {
   const categoryFilteredVideos = filterCategoryVideos(category, videos);
 
   return (
-    <div className="video-listing-container">
-      <div>
-        <SideBar />
-      </div>
-      <div className="video-listing">
-        <div className="featured-category">
-          <div className="btn-flex">
-            <button
-              className={`btn contained ${category === "" ? "active" : ""}`}
-              onClick={() => videoCategoryDispatch({ type: "CLEAR" })}
-            >
-              All
-            </button>
-            {categories.map((item) => (
+      <div className="video-listing-container">
+        <div>
+          <SideBar />
+        </div>
+        <div className="video-listing">
+          <div className="featured-category">
+            <div className="btn-flex">
               <button
-                className={`btn contained ${
-                  category === item.categoryName ? "active" : ""
-                }`}
-                key={item._id}
-                onClick={() =>
-                  videoCategoryDispatch({
-                    type: "SELECT_CATEGORY",
-                    payload: item.categoryName,
-                  })
-                }
+                className={`btn contained ${category === "" ? "active" : ""}`}
+                onClick={() => videoCategoryDispatch({ type: "CLEAR" })}
               >
-                {item.categoryName}
+                All
               </button>
+              {categories.map((item) => (
+                <button
+                  className={`btn contained ${
+                    category === item.categoryName ? "active" : ""
+                  }`}
+                  key={item._id}
+                  onClick={() =>
+                    videoCategoryDispatch({
+                      type: "SELECT_CATEGORY",
+                      payload: item.categoryName,
+                    })
+                  }
+                >
+                  {item.categoryName}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="video-listin-flex">
+            {categoryFilteredVideos.map((video) => (
+              <VideoCard
+                key={video._id}
+                videos={videos}
+                videoId={video._id}
+                videoTitle={video.title}
+                videoView={video.viewCount}
+                subsriber={video.subscriber}
+                channelImg={video.channelImg}
+                videoLength={video.videoLength}
+                videothumbnail={video.thumbnail}
+                videoCreator={video.creator}
+                callAddItemToWatchLaterVideos={callAddItemToWatchLaterVideos}
+              />
             ))}
           </div>
         </div>
-        <div className="video-listin-flex">
-          {categoryFilteredVideos.map((video) => (
-            <VideoCard
-              key={video._id}
-              videoId={video._id}
-              videoTitle={video.title}
-              videoView={video.viewCount}
-              subsriber={video.subscriber}
-              channelImg={video.channelImg}
-              videoLength={video.videoLength}
-              videothumbnail={video.thumbnail}
-              videoCreator={video.creator}
-              callAddItemToWatchLaterVideos={callAddItemToWatchLaterVideos}
-            />
-          ))}
-        </div>
       </div>
-    </div>
   );
 };
 

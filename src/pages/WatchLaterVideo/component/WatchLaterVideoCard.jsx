@@ -1,23 +1,29 @@
 import "../../Playlist/component/playlist.css";
+import { useNavigate } from "react-router-dom";
 const WatchLaterVideoCard = ({
-  watchlaterId,
-  watchlaterTitle,
-  watchlaterThumbnail,
-  watchlaterCreator,
+  _id,
+  title,
+  creator,
+  thumbnail,
   callRemoveItemFromWatchLaterVideos,
 }) => {
+  const navigate = useNavigate();
   return (
-    <div className="playlist-card" key={watchlaterId}>
-      <div className="playlist-card-image">
-        <img src={watchlaterThumbnail} alt={watchlaterTitle} />
+    <div className="playlist-card" key={_id}>
+      <div
+        className="playlist-card-image"
+        onClick={() => navigate(`/explore/${_id}`)}
+      >
+        <img src={thumbnail} alt={title} />
       </div>
       <div className="playlist-card-info">
         <div className="playlist-card-content">
-          {watchlaterTitle} | <span>{watchlaterCreator}</span>
+          <h3>{title} </h3>
+          <span>{creator}</span>
         </div>
         <div
           className="playlist-card-action"
-          onClick={() => callRemoveItemFromWatchLaterVideos(watchlaterId)}
+          onClick={() => callRemoveItemFromWatchLaterVideos(_id)}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
