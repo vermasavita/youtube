@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth, usePlaylist } from "../../context";
 import { PlaylistCard } from "../Playlist/component/PlaylistComp";
-import { SideBar } from "../../components";
+import { Navbar, SideBar } from "../../components";
 import {
   getVideosFromPlaylistHandler,
   removePlaylistHandler,
@@ -27,29 +27,37 @@ const SinglePlaylist = () => {
   );
   return (
     <>
-    <div className="video-listing-container">
-      <div>
-        <SideBar />
-      </div>
-      <div className="playlist-div">
-        {playlist ? <h1> {playlist.title}: {playlist.videos.length}</h1> : null}
-        <button className="btn playlist-btn" onClick={callRemoveFromPlaylistHandler}>
-          Delete
-        </button>
-        <div className="playlist-container">
-          {playlist
-            ? playlist.videos.map((item) => (
-                <PlaylistCard
-                  key={item._id}
-                  {...item}
-                  playlistId={playlistId}
-                  setPlaylist={setPlaylist}
-                />
-              ))
-            : null}
+      <Navbar />
+      <div className="video-listing-container">
+        <div>
+          <SideBar />
+        </div>
+        <div className="playlist-div">
+          {playlist ? (
+            <h1>
+              {playlist.title}: {playlist.videos.length}
+            </h1>
+          ) : null}
+          <button
+            className="btn playlist-btn"
+            onClick={callRemoveFromPlaylistHandler}
+          >
+            Delete
+          </button>
+          <div className="playlist-container">
+            {playlist
+              ? playlist.videos.map((item) => (
+                  <PlaylistCard
+                    key={item._id}
+                    {...item}
+                    playlistId={playlistId}
+                    setPlaylist={setPlaylist}
+                  />
+                ))
+              : null}
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 };

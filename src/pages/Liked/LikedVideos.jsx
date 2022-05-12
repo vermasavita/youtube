@@ -1,5 +1,5 @@
 import { LikedVideoCard } from "./component/LikedVideoCard";
-import { SideBar } from "../../components";
+import { Navbar, SideBar } from "../../components";
 import {
   getLikedVideosHandler,
   removeItemFromLikedVideos,
@@ -24,6 +24,8 @@ const LikedVideo = () => {
 
   useEffect(() => getLikedVideosHandler(token, likeDispatch), []);
   return (
+    <>
+    <Navbar/>
     <div className="video-listing-container">
       <div>
         <SideBar />
@@ -45,6 +47,7 @@ const LikedVideo = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
