@@ -13,7 +13,8 @@ import {
   WatchLaterVideo,
   WatchHistory,
   SingleVideoPage,
-  SinglePlaylist
+  SinglePlaylist,
+  Error404,
 } from "./pages";
 import { PlaylistModal } from "./pages/Playlist/component/PlaylistModal";
 import { usePlaylistModal } from "./context";
@@ -25,7 +26,6 @@ function App() {
   return (
     <div className="App">
       {isActive ? <PlaylistModal /> : null}
-      <Navbar />
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -40,6 +40,7 @@ function App() {
       />
       <Routes>
         <Route path="/" element={<VideoListing />} />
+
         <Route
           path="/playlist"
           element={
@@ -84,6 +85,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/explore/:videoId" element={<SingleVideoPage />} />
+        <Route path="*" element={<Error404 />} />
       </Routes>
     </div>
   );

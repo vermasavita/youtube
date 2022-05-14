@@ -1,5 +1,5 @@
 import { DisplayPlaylist } from "./component/DisplayPlaylist";
-import { SideBar } from "../../components";
+import { Navbar, SideBar } from "../../components";
 import { useAuth, usePlaylist } from "../../context";
 import { getAllPlaylistsHandler } from "../../services";
 import { useEffect } from "react";
@@ -14,6 +14,8 @@ const Playlist = () => {
   useEffect(() => getAllPlaylistsHandler(token, playlistDispatch), []);
 
   return (
+    <>
+    <Navbar/>
     <div className="video-listing-container">
       <div>
         <SideBar />
@@ -27,6 +29,7 @@ const Playlist = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

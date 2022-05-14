@@ -1,5 +1,5 @@
 import { WatchHistoryVideoCard } from "./component/WatchHistoryCard";
-import { SideBar } from "../../components";
+import { Navbar, SideBar } from "../../components";
 import { useAuth, useHistory } from "../../context";
 import {
   getHistoryVideosHandler,
@@ -30,34 +30,37 @@ const WatchHistory = () => {
 
   useEffect(() => getHistoryVideosHandler(token, historyDispatch), []);
   return (
-    <div className="video-listing-container">
-      <div>
-        <SideBar />
-      </div>
-      <div className="playlist-div">
-        {history.length !== 0 ? (
-          <>
-            <h1> History Videos: {history.length}</h1>
-            <button className="btn" onClick={callClearHistoryHandler}>
-              Clear History
-            </button>
-          </>
-        ) : (
-          <h1> No Videos in History</h1>
-        )}
-        <div className="playlist-container">
-          {history.map((video) => (
-            <WatchHistoryVideoCard
-              key={video._id}
-              {...video}
-              callRemoveVideoFromHistoryHandler={
-                callRemoveVideoFromHistoryHandler
-              }
-            />
-          ))}
+    <>
+      <Navbar />
+      <div className="video-listing-container">
+        <div>
+          <SideBar />
+        </div>
+        <div className="playlist-div">
+          {history.length !== 0 ? (
+            <>
+              <h1> History Videos: {history.length}</h1>
+              <button className="btn" onClick={callClearHistoryHandler}>
+                Clear History
+              </button>
+            </>
+          ) : (
+            <h1> No Videos in History</h1>
+          )}
+          <div className="playlist-container">
+            {history.map((video) => (
+              <WatchHistoryVideoCard
+                key={video._id}
+                {...video}
+                callRemoveVideoFromHistoryHandler={
+                  callRemoveVideoFromHistoryHandler
+                }
+              />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -36,3 +36,26 @@
     margin-right: 0;
     color: var(--white-color);
 }
+
+.search-container #search{
+  border-color: var(--ligtest-color);
+  color: var(--black-color);
+}
+
+@media screen and (max-width: 900px) {
+  .header{
+    position: fixed;
+    z-index: 3;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .logo{
+    display: none;
+  }
+
+  .search-container{
+    width: 60%;
+    margin-right: 10rem;
+  }
+}
