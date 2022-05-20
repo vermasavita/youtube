@@ -2,7 +2,7 @@
 
 Video Library is an online responsive website where you can watch videos of different category. 
 
-[Video Library Live Link](https://youtube-two-nu.vercel.app/)
+[Video Library Live Link](https://note-buk.vercel.app/)
 
 ---
 
